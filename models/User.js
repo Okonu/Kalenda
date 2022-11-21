@@ -4,10 +4,8 @@ const ENCRYPT_TIMES = 10;
 
 const { Schema } = mongoose;
 
-const userSchema = mongoose;
-
 const userSchema = new Schema({
-    username: String,
+    username: { String,
     required: true,
     unique: true,
     },
@@ -33,4 +31,4 @@ const userSchema = new Schema({
         type: String
     }
 }]
-);
+});
