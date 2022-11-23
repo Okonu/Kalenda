@@ -30,6 +30,16 @@ export default function Home(){
     /*back button*/
 
     const back = () => {
-        let week = weekCounter + 7;
-    }
+        let week = weekCounter - 7;
+    date = dayjs(new Date(new Date().setDate(new Date().getDate() + week))).format('MMMM D');
+    setWeekCounter(week);
+    dispatch(setCurrentDate({
+      day: day,
+      date: date,
+      hour: hour,
+      weekCounter: week
+    }))
+  }
+
+   
 }
