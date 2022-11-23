@@ -40,6 +40,27 @@ export default function Home(){
       weekCounter: week
     }))
   }
+  /*Forward button.  */
+  const forward = () => {
+    let week = weekCounter + 7;
+    date = dayjs(new Date(new Date().setDate(new Date().getDate() + week))).format('MMMM D');
+    console.log(date)
+    setWeekCounter(week);
+    dispatch(setCurrentDate({
+      day: day,
+      date: date,
+      hour: hour,
+      weekCounter: week
+    }))
+  }
 
-   
+  /** Goes to the current week, and scrolls the current time into view. */
+  const goToToday = () => {
+    dispatch(setCurrentDate({
+      day: day,
+      date: date,
+      hour: hour,
+      weekCounter: 0
+    }))
+    }
 }
