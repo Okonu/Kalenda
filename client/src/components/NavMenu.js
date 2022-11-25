@@ -34,5 +34,10 @@ export default function NavMenu(props){
          {' '}
          Calendar
     </Navbar.Brand>
+    <Button className='btn btn-outline-info' onClick={props.goToToday}>Today</Button>
+    <Navbar.Toggle/>
+    <div className='empty-div-before'></div>
+    <Clock/>
+    <div className='empty-div-after'></div>
     </>)
 }
