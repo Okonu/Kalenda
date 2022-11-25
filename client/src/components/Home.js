@@ -62,5 +62,40 @@ export default function Home(){
       hour: hour,
       weekCounter: 0
     }))
+    //the calendar needs to updated every week before it can be scrolled into view
+    setTimeout(() => {
+      try {
+        document.getElementsByClassName('current-hour')[0].scrollIntoView({behavior: 'smooth', block: 'center'})
+      } catch (TypeError) {
+        setTimeout(() => {
+          try {
+            document.getElementsByClassName('current-hour')[0].scrollIntoView({behavior: 'smooth', block: 'center'})
+          } catch (TypeError) {
+            console.error(TypeError)
+          }
+        }, 700)
+      }
+    }, 300)
+  }
+
+  //re-rendering the calendar after getting the date
+  useEffect(() => {
+    if (setCurrentDate.day){
+      setCalendar(<Calendar />)
     }
+    return () => {
+      setCalendar()
+    }
+  }, [currentDate])
+
+  return (
+    <>
+      <NavMenu goToToday={goToToday} />
+      <div className='btn-container'>
+        <button className='btn btn-success' id='back-btn' onClick={back}>Back</button>
+        <div id='empty-btn-div'></div>
+        <button className='btn btn-success' id='forward-btn' onClick={forward}>Forward</button>
+        </div>
+        </>
+  )
 }
